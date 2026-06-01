@@ -75,6 +75,7 @@ exports.getPostById = async (req, res) => {
 // Update Post
 exports.updatePost = async (req, res) => {
   try {
+    const { title, content } = req.body;
     const post = await Post.findById(req.params.id);
 
     if (!post) {
@@ -89,8 +90,8 @@ exports.updatePost = async (req, res) => {
       });
     }
 
-    post.title = req.body.title || post.title;
-    post.content = req.body.content || post.content;
+    post.title = req.body.title;
+    post.content = req.body.content;
 
     if (!title || !content) {
       return res.status(400).json({
