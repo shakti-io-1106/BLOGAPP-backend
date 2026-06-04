@@ -5,6 +5,8 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/postRoutes");
 const commentRoutes = require("./routes/commentRoutes");
+const accountRoutes = require("./routes/accountRoutes");
+
 const protect = require("./middleware/authMiddleware");
 
 const connectDB = require("./config/db");
@@ -32,6 +34,7 @@ app.get("/api/profile", protect, (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
+app.use("/api/account", accountRoutes);
 
 const PORT = process.env.PORT || 5000;
 
